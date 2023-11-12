@@ -46,4 +46,6 @@ Route::prefix('admin')->group(function(){
     Route::resource('petugas', PetugasController::class);
     Route::resource('masyarakat', MasyarakatController::class);
     Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+
+    Route::post('tanggapan/CreateOrUpdate', [TanggapanController::class, 'CreateOrUpdate'])->name('tanggapan.CreateOrUpdate');
 });
