@@ -135,7 +135,7 @@
                         @endif
                     </div>
                     <div>
-                        <p>{{ \Carbon\Carbon::parse($v->tgl_pengaduan)->format('j F Y, H:i') }}</p>
+                        <p>{{ $v->tgl_pengaduan->format('d M, h:i') }}</p>
                     </div>
                 </div>
             </div>
