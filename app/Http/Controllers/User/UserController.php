@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Masyarakat;
 use App\Models\Pengaduan;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -105,7 +106,7 @@ class UserController extends Controller
         date_default_timezone_set('Asia/Bangkok');
 
         $pengaduan = Pengaduan::create([
-            'tgl_pengaduan' => strings('Y-m-d h:i:s'),
+            'tgl_pengaduan' => Date('Y-m-d h:i:s'),
             'nik' => Auth::guard('masyarakat')->user()->nik,
             'isi_laporan' => $data['isi_laporan'],
             'foto' => $data['foto'] ?? '',
