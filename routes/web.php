@@ -41,4 +41,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::resource('pengaduan', PengaduanController::class);
+    Route::resource('petugas', PetugasController::class);
+    Route::resource('masyarakat', MasyarakatController::class);
+    Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
 });
