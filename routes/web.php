@@ -47,6 +47,8 @@ Route::prefix('admin')->middleware((['isAdmin']))->group(function () {
         Route::resource('masyarakat', MasyarakatController::class);
         //laporan
         Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+        Route::post('getLaporan', [LaporanController::class, 'getLaporan'])->name('laporan.getLaporan');
+        Route::get('laporan/cetak/{from}/{to}', [LaporanController::class, 'cetakLaporan'])->name('laporan.cetakLaporan');
     });
 
     Route::middleware(['isPetugas'])->group(function () {
