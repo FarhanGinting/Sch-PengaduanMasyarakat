@@ -29,7 +29,7 @@
                 @elseif($v->status == 'proses')
                 <a href="#" class="badge badge-warning text-white">Proses</a>
                 @else
-                <a href="#" class="badge badge-succes">Selesai</a>
+                <a href="#" class="badge badge-success">Selesai</a>
                 @endif
             </td>
             <td>

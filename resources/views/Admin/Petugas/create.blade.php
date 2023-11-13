@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-12">
-            @if ($Session::has('username'))
+            @if (Session::has('username'))
                 <div class="alert alert-danger">
                     {{ Session::get('username') }}
                 </div>
