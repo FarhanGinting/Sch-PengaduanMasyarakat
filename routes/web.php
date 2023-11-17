@@ -22,11 +22,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [UserController::class, 'index'])->name('pekat.index');
+Route::get('/logout', [UserController::class, 'logout'])->name('pekat.logout');
 
 Route::middleware(['isMasyarakat'])->group(function () {
     Route::post('/store', [UserController::class, 'storePengaduan'])->name('pekat.store');
     Route::get('/laporan/{siapa?}', [UserController::class, 'laporan'])->name('pekat.laporan');
-    Route::get('/logout', [UserController::class, 'logout'])->name('pekat.logout');
+    
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -60,7 +61,7 @@ Route::prefix('admin')->middleware((['isAdmin']))->group(function () {
         Route::post('tanggapan/CreateOrUpdate', [TanggapanController::class, 'CreateOrUpdate'])->name('tanggapan.CreateOrUpdate');
         
         //Logout
-        Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+        // Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
     });
     Route::middleware(['isGuest'])->group(function () {
         Route::get('/', [AdminController::class, 'formLogin'])->name('admin.formLogin');

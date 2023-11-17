@@ -33,6 +33,7 @@ class UserController extends Controller
 
         if (Auth::guard('masyarakat')->attempt(['username' => $request->username, 'password' => $request->password])) {
             return redirect()->back();
+            // return dd(Auth::guard('masyarakat')->user())->get();
         } else {
             return redirect()->back()->with(['pesan' => 'Akun tidak terdaftar!']);
         }
@@ -76,9 +77,11 @@ class UserController extends Controller
         return redirect()->route('pekat.index');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::guard('masyarakat')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect()->back();
     }
@@ -133,7 +136,7 @@ class UserController extends Controller
 
             return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
         } else {
-            $pengaduan = Pengaduan::where([['nik', '!=', Auth::guard('masyarakat')->user()->nik], ['status', '!=', '0']])->orderBy('tgl_pengaduan', 'desc')->get();
+            $pengaduan = Pengaduan::all();
 
             return view('user.laporan', ['pengaduan' => $pengaduan, 'hitung' => $hitung, 'siapa' => $siapa]);
         }

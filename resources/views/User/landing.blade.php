@@ -21,7 +21,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    @if(Auth::guard('masyarakat')->check())
+                    @if(Auth::guard('masyarakat')->user())
                     <ul class="navbar-nav text-center ml-auto">
                         <li class="nav-item">
                             <a class="nav-link ml-3 text-white" href="{{ route('pekat.laporan') }}">Laporan</a>
